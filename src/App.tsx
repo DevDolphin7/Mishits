@@ -1,5 +1,11 @@
+import Logo from "./components/Logo";
+
 function App() {
-  return <h1>Mishits</h1>
+  return (
+    <>
+      <Logo />
+    </>
+  );
 }
 
-export default App
+export default App;
