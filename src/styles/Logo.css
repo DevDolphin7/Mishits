@@ -1,0 +1,30 @@
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
+}
+
+.logo-letter {
+    /* transform: matrix(3.7795276,0,0,3.7795276,-53.543154,-168.13534); */
+    opacity: 1;
+    animation: fade 6s infinite;
+}
+
+.logo-knife path {  
+    /* transform: matrix(3.7795276,0,0,3.7795276,-53.543154,-168.13534);  */
+    opacity: 1;
+    animation: fade 6s reverse infinite;
+}
+
+#logo-s2 {
+    transform: translate(58.676564px,5.0028258px);
+}
+
+#knife92 #knife88 #knife90 #knife86  {
+    transform: rotate(60deg);
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
