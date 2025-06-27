@@ -1,10 +1,13 @@
 import Logo from "./components/Logo";
+import "./styles/App.scss";
 
 function App() {
   return (
-    <>
-      <Logo />
-    </>
+    <main>
+      <header>
+        <Logo />
+      </header>
+    </main>
   );
 }
 
