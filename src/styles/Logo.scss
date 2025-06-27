@@ -1,32 +1,36 @@
 @use "colours";
 
-.logo {
+div.logo {
     display: flex;
-    flex-wrap: wrap;
-    background-color: colours.$primary;
+    align-items: center;
+    padding: 0 10px;
+    width: 140px;
+    height: 80px;
+}
+
+svg#logo {
+    display: flex;
+    translate: 0 -20px;
+    width: 140px;
+    height: 100px;
 }
 
 .logo-letter {
-    /* transform: matrix(3.7795276,0,0,3.7795276,-53.543154,-168.13534); */
-    opacity: 1;
-    animation: fade 6s infinite;
+    fill: colours.$logo-fill;
+    animation: fade 6s infinite ease-out;
 }
 
-.logo-knife path {  
-    /* transform: matrix(3.7795276,0,0,3.7795276,-53.543154,-168.13534);  */
-    opacity: 1;
-    animation: fade 6s reverse infinite;
-}
-
-#logo-s2 {
-    transform: translate(58.676564px,5.0028258px);
-}
-
-#knife92 #knife88 #knife90 #knife86  {
-    transform: rotate(60deg);
+.logo-knife {  
+    transform: rotate(80deg);
+    animation: fade 6s infinite ease-out, stab 6s infinite;
 }
 
 @keyframes fade {
-  0%,100% { opacity: 0 }
-  50% { opacity: 1 }
+    0%,100% { opacity: 0.5 }
+    50% { opacity: 1 }
+}
+
+@keyframes stab {
+    0%,100% { translate: 120px -40px }
+    90% { translate: 170px -50px }
 }
