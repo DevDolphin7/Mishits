@@ -1,7 +1,9 @@
+@use "colours";
+
 .logo {
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
+    background-color: colours.$primary;
 }
 
 .logo-letter {
