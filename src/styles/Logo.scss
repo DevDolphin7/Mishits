@@ -1,15 +1,14 @@
 @use "colours";
+@use "mixins";
 
 div.logo {
-    display: flex;
-    align-items: center;
+    @include mixins.centre-content;
     padding: 0 10px;
     width: 140px;
     height: 80px;
 }
 
 svg#logo {
-    display: flex;
     translate: 0 -20px;
     width: 140px;
     height: 100px;
