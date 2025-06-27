@@ -1,13 +1,17 @@
 import Logo from "./components/Logo";
+import News from "./components/News";
 import "./styles/App.scss";
 
 function App() {
   return (
-    <main>
+    <div id="site">
       <header>
         <Logo />
       </header>
-    </main>
+      <main>
+        <News />
+      </main>
+    </div>
   );
 }
 
