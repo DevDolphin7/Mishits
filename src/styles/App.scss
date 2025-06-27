@@ -1,0 +1,16 @@
+@use "colours";
+
+main {
+    display: flex;
+    height: fit-content;
+    width: 100vw;
+    background-color: colours.$background;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    width: 100vw;
+    background-color: colours.$header-background;
+}
