@@ -18,6 +18,7 @@ header {
 
 main {
     @include mixins.centre-content;
+    flex-wrap: wrap;
     height: fit-content;
     width: 80vw;
     background-color: colours.$main-background;
