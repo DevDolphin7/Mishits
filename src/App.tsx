@@ -1,5 +1,5 @@
 import Logo from "./components/Logo";
-import News from "./components/News";
+import Content from "./components/Content";
 import "./styles/App.scss";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <Logo />
       </header>
       <main>
-        <News />
+        <Content />
       </main>
     </div>
   );
