@@ -10,7 +10,14 @@ export default function SongCardWide({ song }: { song: Sound }) {
   return (
     <div id="song-card-wide">
       <ProvideTheme>
-        <Card sx={{ display: "flex", backgroundColor: "#303030" }}>
+        <Card
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: 180,
+            backgroundColor: "#303030",
+          }}
+        >
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
               <Typography component="div" variant="h5">
@@ -24,15 +31,15 @@ export default function SongCardWide({ song }: { song: Sound }) {
                 {song.artist}
               </Typography>
             </CardContent>
-            <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-              <audio src={song.data} controls style={{ width: "fit-content" }}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <audio src={song.data} controls style={{ width: "100%" }}>
                 <code> Your browser doesn't support audio tags</code>
               </audio>
             </Box>
           </Box>
           <CardMedia
             component="img"
-            sx={{ width: 151, height: 151 }}
+            sx={{ width: 151, height: "100%" }}
             image={song.albumArtwork}
             alt={`${song.album} Artwork`}
           />
