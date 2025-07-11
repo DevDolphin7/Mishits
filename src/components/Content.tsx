@@ -1,12 +1,16 @@
 import ListenNow from "./ListenNow";
+import News from "./News";
 import "../styles/Content.scss";
 
 export default function Content() {
+  const news = {
+    title: "hello, world",
+  };
+
   return (
     <>
-      <section className="listen-now">
-        <ListenNow />
-      </section>
+      <ListenNow />
+      <News news={news} />
     </>
   );
 }
