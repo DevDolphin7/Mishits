@@ -1,0 +1,24 @@
+@use "screen-size";
+
+#news {
+    max-width: screen-size.$mobile-max-width;
+    min-width: 100px;
+    background-color: turquoise;
+}
+
+#news header {
+    // width: 100px;
+    background-color: blue;
+}
+
+#news article {
+    background-color: pink;
+}
+
+#news img {
+    background-color: yellow;
+}
+
+#news footer {
+    background-color: green;
+}
