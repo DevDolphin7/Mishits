@@ -1,18 +1,24 @@
-import "../styles/SongCard.scss";
+import "../styles/SongCardWide.scss";
 
 export default function SongCardWide({ song }: { song: Sound }) {
   return (
-    <div id="song-card-wide">
-      <div id="info">
-        {song.title}
-        {song.artist}
+    <section id="song-card-wide" className="song-card">
+      <div id="hmi">
+        <div id="song-info">
+          <h4>{song.title}</h4>
+          <h5>{song.artist}</h5>
+        </div>
+
+        <div id="controls">
+          <audio src={song.data} controls style={{ width: "100%" }}>
+            <code> Your browser doesn't support audio tags</code>
+          </audio>
+        </div>
       </div>
 
-      <audio src={song.data} controls style={{ width: "100%" }}>
-        <code> Your browser doesn't support audio tags</code>
-      </audio>
-
-      <img src={song.albumArtwork} alt={`${song.album} Artwork`} />
-    </div>
+      <div id="artwork">
+        <img src={song.albumArtwork} alt={`${song.album} Artwork`} />
+      </div>
+    </section>
   );
 }
