@@ -1,0 +1,51 @@
+@use "screen-size";
+@use "colours";
+
+#song-card-wide {
+    height: 160px;
+    width: 100%;
+    max-width: 430px;
+    min-width: 100px;
+    display: flex;
+    background-color: colours.$song-card-background;
+}
+
+#song-info {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#controls {
+    height: 40px;
+}
+
+#artwork {
+    width: 160px;
+    overflow: hidden;
+}
+
+#artwork img {
+   height: 160px;
+}
+
+h4, h5 {
+    padding: 5px;
+}
+
+h4 {
+    color: colours.$font-primary;
+    font-size: 20px;
+}
+
+h5 {
+    color: colours.$font-secondary;
+    font-size: 16px;
+}
+
+@media (max-width: screen-size.$mobile-min-width) {
+    #song-card-wide #artwork {    
+        display: none;
+    }
+}
