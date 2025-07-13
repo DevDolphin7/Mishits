@@ -1,7 +1,7 @@
-@use "screen-size";
+@use "sizes";
 
 .song-card {
-    max-width: screen-size.$mobile-max-width;
+    max-width: sizes.$mobile-max-width;
     min-width: 100px;
     margin: 0 0 20px 0;
 }

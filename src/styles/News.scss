@@ -1,8 +1,8 @@
-@use "screen-size";
+@use "sizes";
 @use "colours";
 
 #news {
-    max-width: screen-size.$mobile-max-width;
+    max-width: sizes.$mobile-max-width;
     min-width: 100px;
     width: 100%;
     background-color: turquoise;
