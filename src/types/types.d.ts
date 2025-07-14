@@ -8,6 +8,8 @@ interface Sound {
 
 interface News {
   title: string;
+  body: string[];
+  footer: string;
   image: string;
   imageAltText: string;
 }
