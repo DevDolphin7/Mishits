@@ -5,3 +5,11 @@ interface Sound {
   albumArtwork: string;
   data: string;
 }
+
+interface News {
+  title: string;
+  body: string[];
+  footer: string;
+  image: string;
+  imageAltText: string;
+}

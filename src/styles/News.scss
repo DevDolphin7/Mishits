@@ -1,0 +1,29 @@
+@use "sizes";
+@use "colours";
+
+#news {
+    max-width: sizes.$mobile-max-width;
+    min-width: 100px;
+    width: 100%;
+    background-color: colours.$site-background;
+}
+
+#news h1 {
+    font-size: sizes.$title-primary;
+    color: colours.$title-primary;
+    background-color: colours.$header-background;
+}
+
+#news article {
+    font-size: sizes.$font-primary;
+    color: colours.$font-primary;
+}
+
+#news img {
+    width: 100%;
+}
+
+#news h2 {
+    font-size: sizes.$title-secondary;
+    color: colours.$title-secondary;
+}

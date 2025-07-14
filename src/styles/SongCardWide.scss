@@ -1,50 +1,48 @@
-@use "screen-size";
+@use "sizes";
 @use "colours";
 
 #song-card-wide {
     height: 160px;
     width: 100%;
-    max-width: 430px;
-    min-width: 100px;
     display: flex;
     background-color: colours.$song-card-background;
 }
 
-#song-info {
+#song-card-wide #song-info {
     height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-#controls {
+#song-card-wide #controls {
     height: 40px;
 }
 
-#artwork {
+#song-card-wide #artwork {
     width: 160px;
     overflow: hidden;
 }
 
-#artwork img {
+#song-card-wide #artwork img {
    height: 160px;
 }
 
-h4, h5 {
+#song-card-wide h4, #song-card-wide h5 {
     padding: 5px;
 }
 
-h4 {
-    color: colours.$font-primary;
+#song-card-wide h4 {
+    color: colours.$title-primary;
     font-size: 20px;
 }
 
-h5 {
-    color: colours.$font-secondary;
+#song-card-wide h5 {
+    color: colours.$title-secondary;
     font-size: 16px;
 }
 
-@media (max-width: screen-size.$mobile-min-width) {
+@media (max-width: sizes.$mobile-min-width) {
     #song-card-wide #artwork {    
         display: none;
     }
