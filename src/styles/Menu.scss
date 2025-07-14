@@ -1,0 +1,19 @@
+@use "colours";
+@use "sizes";
+
+#menu {
+    // align-self: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 5% 0 auto;
+    border: 5px;
+    border-style: outset;
+    border-color: colours.$site-background;
+    background-color: colours.$header-background;
+}
+
+@media (min-width: sizes.$mobile-max-width) {
+    #menu {    
+        display: none;
+    }
+}

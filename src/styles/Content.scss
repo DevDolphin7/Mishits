@@ -1,0 +1,11 @@
+@use "colours";
+@use "mixins";
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 5%;
+    background-color: colours.$main-background;
+}
