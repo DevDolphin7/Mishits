@@ -1,0 +1,13 @@
+@use "colours";
+@use "mixins";
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: colours.$header-background;
+}
+
+#navbar:last-child {
+    margin-left: auto;
+}

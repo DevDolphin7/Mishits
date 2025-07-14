@@ -1,12 +1,12 @@
-import Logo from "./components/Logo";
+import Header from "./components/Header";
 import Content from "./components/Content";
 import "./styles/App.scss";
 
-function App() {
+export default function App() {
   return (
     <div id="site">
       <header>
-        <Logo />
+        <Header />
       </header>
       <main>
         <Content />
@@ -14,5 +14,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
