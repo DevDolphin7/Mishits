@@ -8,10 +8,23 @@ export default function Menu() {
     setMenuOpen(!menuOpen);
   };
 
+  const handleNavClick = (location: string) => {
+    console.log(location);
+  };
+
   return (
     <>
       <div id="menu" onClick={() => handleMenuClick()}></div>
-      {menuOpen ? <section id="menu-screen"></section> : null}
+      <section
+        id="menu-screen"
+        className={menuOpen ? "menu-open" : "menu-closed"}
+      >
+        <p onClick={() => handleNavClick("home")}>Fiend Home</p>
+        <p onClick={() => handleNavClick("listen")}>Fiend Listen</p>
+        <p onClick={() => handleNavClick("news")}>Fiend News</p>
+        <p onClick={() => handleNavClick("pics")}>Fiend Pics</p>
+        <p onClick={() => handleNavClick("about")}>About Fiends</p>
+      </section>
     </>
   );
 }
