@@ -5,12 +5,12 @@ export default function News({ news }: { news: News }) {
     <section id="news">
       <h1>{news.title}</h1>
       <article>
-        {"info\ninfo\ninfo".split("\n").map((paragraph) => (
-          <p>{paragraph}</p>
+        {news.body.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
         ))}
       </article>
       <img src={news.image} alt={news.imageAltText} />
-      <h2>See you there!</h2>
+      <h2>{news.footer}</h2>
     </section>
   );
 }
