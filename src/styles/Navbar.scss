@@ -1,0 +1,21 @@
+@use "colours";
+@use "sizes";
+
+#navbar {
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: sizes.$font-secondary;
+    color: colours.$title-secondary;
+}
+
+#navbar h2 {
+    display: flex;
+    
+}
+
+@media (max-width: sizes.$mobile-max-width) {
+    #navbar {
+        display: none;
+    }
+}
