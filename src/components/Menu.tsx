@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import NavButtons from "./utils/NavButtons";
 import "../styles/Menu.scss";
 
 export default function Menu() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuRenderCount, setMenuRenderCount] = useState(0);
+  const menuOpen = menuRenderCount % 2 === 1;
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 430 && menuRenderCount !== 0) {
+        setMenuRenderCount(0);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [menuRenderCount]);
 
   const handleMenuClick = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const handleNavClick = (location: string) => {
-    console.log(location);
+    setMenuRenderCount(menuRenderCount + 1);
   };
 
   return (
@@ -17,13 +26,15 @@ export default function Menu() {
       <div id="menu" onClick={() => handleMenuClick()}></div>
       <section
         id="menu-screen"
-        className={menuOpen ? "menu-open" : "menu-closed"}
+        className={
+          menuOpen
+            ? "menu-open"
+            : menuRenderCount === 0
+            ? "menu-initial-state"
+            : "menu-closed"
+        }
       >
-        <p onClick={() => handleNavClick("home")}>Fiend Home</p>
-        <p onClick={() => handleNavClick("listen")}>Fiend Listen</p>
-        <p onClick={() => handleNavClick("news")}>Fiend News</p>
-        <p onClick={() => handleNavClick("pics")}>Fiend Pics</p>
-        <p onClick={() => handleNavClick("about")}>About Fiends</p>
+        <NavButtons fiend={true} />
       </section>
     </>
   );
