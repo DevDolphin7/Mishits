@@ -32,7 +32,7 @@
     background-color: colours.$logo-fill;
 }
 
-#menu-screen p {
+#menu-screen h2 {
     padding: 10px 0;
     font-size: sizes.$title-secondary;
     color: colours.$font-primary;
@@ -46,22 +46,22 @@
     animation: slide-out 1s forwards;
 }
 
-@media (min-width: sizes.$mobile-max-width) {
-    #menu {    
-        display: none;
-    }
+.menu-initial-state {
+    transform: translateY(-100vh);
+}
 
-    #menu-screen {
+@media (min-width: sizes.$mobile-max-width) {
+    #menu, #menu-screen {    
         display: none;
     }
 }
 
 @keyframes slide-in {
     0% { opacity: 0.5; transform: translateY(-100vh) }
-    100% { opacity: 1; transform: translateY(0)  }
+    100% { opacity: 1; transform: translateY(0) }
 }
 
 @keyframes slide-out {
     0% { opacity: 1; transform: translateY(0) }
-    100% { opacity: 0.5; transform: translateY(-100vh)  }
+    100% { opacity: 0.5; transform: translateY(-100vh) }
 }
