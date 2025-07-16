@@ -17,3 +17,8 @@ interface News {
 interface NavButtons {
   [key: string]: string;
 }
+
+interface Sizes {
+  mobileMaxWidth: number;
+  tabletMaxWidth: number;
+}
