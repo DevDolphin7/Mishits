@@ -1,4 +1,4 @@
-let sizes: Sizes = {
+const sizes: Sizes = {
     mobileMaxWidth: 450,
     tabletMaxWidth: 1300,
 }
