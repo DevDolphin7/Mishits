@@ -1,0 +1,22 @@
+name: Run linting
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: main
+
+jobs:
+  build:
+    name: Run linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Prerequisites
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+          \. "$HOME/.nvm/nvm.sh"
+          nvm install 22
+      - name: Install dependencies
+        run: npm install
+      - name: Run Linting
+        run: npm run lint
