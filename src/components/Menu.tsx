@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavButtons from "./utils/NavButtons";
+import sizes from "./utils/sizes";
 import "../styles/Menu.scss";
 
 export default function Menu() {
@@ -8,7 +9,7 @@ export default function Menu() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 430 && menuRenderCount !== 0) {
+      if (window.innerWidth > sizes.mobileMaxWidth && menuRenderCount !== 0) {
         setMenuRenderCount(0);
       }
     };

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NavButtons from "./utils/NavButtons";
+import sizes from "./utils/sizes";
 import "../styles/Navbar.scss";
 
 export default function Navbar() {
@@ -7,9 +8,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1000 && !fiend) {
+      if (window.innerWidth > sizes.tabletMaxWidth && !fiend) {
         setFiend(true);
-      } else if (window.innerWidth < 1000 && fiend) {
+      } else if (window.innerWidth < sizes.tabletMaxWidth && fiend) {
         setFiend(false);
       }
     };
