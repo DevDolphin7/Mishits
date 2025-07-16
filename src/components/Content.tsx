@@ -13,9 +13,9 @@ export default function Content() {
   };
 
   return (
-    <>
+    <div id="content">
       <ListenNow />
       <News news={news} />
-    </>
+    </div>
   );
 }

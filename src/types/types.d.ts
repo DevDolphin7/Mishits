@@ -13,3 +13,12 @@ interface News {
   image: string;
   imageAltText: string;
 }
+
+interface NavButtons {
+  [key: string]: string;
+}
+
+interface Sizes {
+  mobileMaxWidth: number;
+  tabletMaxWidth: number;
+}
