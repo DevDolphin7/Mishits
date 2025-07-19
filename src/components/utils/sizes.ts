@@ -1,6 +1,6 @@
 const sizes: Sizes = {
-    mobileMaxWidth: 450,
-    tabletMaxWidth: 1300,
-}
+  mobileMaxWidth: 450,
+  tabletMaxWidth: 1300,
+};
 
-export default sizes
+export default sizes;
