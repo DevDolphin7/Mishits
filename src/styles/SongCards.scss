@@ -1,0 +1,82 @@
+@use "sizes";
+@use "colours";
+
+// All song cards
+
+.song-card {
+    display: flex;
+    background-color: colours.$song-card-background;
+}
+
+.song-card #controls {
+    height: 40px;
+}
+
+.song-card h4, .song-card h5 {
+    padding: 5px;
+}
+
+.song-card h4 {
+    color: colours.$title-primary;
+    font-size: 20px;
+}
+
+.song-card h5 {
+    color: colours.$title-secondary;
+    font-size: 16px;
+}
+
+// song card wide
+
+#song-card-wide {
+    height: 160px;
+    width: 100%;
+    max-width: sizes.$mobile-max-width;
+}
+
+#song-card-wide #song-info {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#song-card-wide #artwork {
+    width: 160px;
+    overflow: hidden;
+}
+
+#song-card-wide #artwork img {
+   height: 160px;
+}
+
+@media (max-width: sizes.$mobile-min-width) {
+    #song-card-wide #artwork {    
+        display: none;
+    }
+}
+
+// song card thin
+
+#song-card-thin {
+    width: 30%;
+    height: fit-content;
+    max-height: 40vw;
+    max-width: sizes.$tablet-max-width;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#song-card-thin #song-info {
+    height: fit-content;
+}
+
+#song-card-thin #artwork {
+    width: 100%;
+    overflow: hidden;
+}
+
+#song-card-thin #artwork img {
+   height: 100%;
+   max-height: 20vw;
+}
