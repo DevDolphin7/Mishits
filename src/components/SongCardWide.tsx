@@ -1,4 +1,4 @@
-import "../styles/SongCardWide.scss";
+import "../styles/SongCards.scss";
 
 export default function SongCardWide({ song }: { song: Sound }) {
   return (

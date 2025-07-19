@@ -1,7 +1,22 @@
 @use "sizes";
 
-.song-card {
-    max-width: sizes.$mobile-max-width;
-    min-width: 100px;
+#listen-now {
+    width: 100%;
+}
+
+#listen-now .song-card {
     margin: 0 0 20px 0;
+}
+
+@media (max-width: sizes.$mobile-max-width) {
+    #listen-now {
+        min-width: 100px;
+    }
+}
+
+@media (min-width: sizes.$mobile-max-width) {
+    #listen-now {
+        display:flex;
+        justify-content: space-between;
+    }
 }
