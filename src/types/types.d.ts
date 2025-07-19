@@ -1,5 +1,14 @@
 type Device = "mobile" | "tablet" | "monitor";
 
+interface Media {
+  media: string;
+  mediaAltText: string;
+}
+
+interface Attention extends Media {
+  text?: string;
+}
+
 interface Sound {
   title: string;
   artist: string;
@@ -8,12 +17,10 @@ interface Sound {
   data: string;
 }
 
-interface News {
+interface News extends Media {
   title: string;
   body: string[];
   footer: string;
-  image: string;
-  imageAltText: string;
 }
 
 interface NavButtons {
