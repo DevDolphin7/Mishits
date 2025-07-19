@@ -1,3 +1,5 @@
+type Device = "mobile" | "tablet" | "monitor";
+
 interface Sound {
   title: string;
   artist: string;
