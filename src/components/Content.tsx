@@ -71,7 +71,6 @@ export default function Content() {
       })
       .then((songsWithData) => {
         if (songsWithData) {
-          console.log("Songs with data:", songsWithData);
           setCloudContents(songsWithData);
         } else {
           console.error("No songs with data available");
