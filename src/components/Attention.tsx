@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getImages } from "./utils/api";
+import { getMedias } from "./utils/api";
 import CloudImage from "./utils/CloudImage";
 import "../styles/Attention.scss";
 import Loading from "./utils/Loading";
@@ -8,10 +8,9 @@ export default function Attention() {
   const [cloudImageIDs, setCloudImageIDs] = useState<string[]>([]);
 
   useEffect(() => {
-    getImages("attention")
-      .then((imageIDs) => {
-        console.log("Fetched images:", imageIDs);
-        setCloudImageIDs(imageIDs);
+    getMedias("attention", "image")
+      .then((images) => {
+        setCloudImageIDs(images.map((image) => image.public_id));
       })
       .catch((error) => {
         console.error("Error fetching images: ", error);
