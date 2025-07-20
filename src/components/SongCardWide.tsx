@@ -1,3 +1,5 @@
+import { AdvancedVideo } from "@cloudinary/react";
+import Loading from "./utils/Loading";
 import "../styles/SongCards.scss";
 
 export default function SongCardWide({ song }: { song: Sound }) {
@@ -10,15 +12,19 @@ export default function SongCardWide({ song }: { song: Sound }) {
         </div>
 
         <div id="controls">
-          <audio src={song.data} controls style={{ width: "100%" }}>
-            <code> Your browser doesn't support audio tags</code>
-          </audio>
+          {song.data ? (
+            <AdvancedVideo
+              cldVid={song.data}
+              controls
+              className="cloudinary-advanced-video"
+            />
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
 
-      <div id="artwork">
-        <img src={song.albumArtwork} alt={`${song.album} Artwork`} />
-      </div>
+      <div id="artwork">{song.albumArtwork}</div>
     </section>
   );
 }
