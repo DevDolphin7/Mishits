@@ -1,7 +1,7 @@
 type Device = "mobile" | "tablet" | "monitor";
 
 interface Media {
-  media: string;
+  media: React.ReactElement | null;
   mediaAltText: string;
 }
 
