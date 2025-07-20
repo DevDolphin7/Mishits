@@ -15,6 +15,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Set CONSOLE_LOGS env var
+        run: echo "CONSOLE_LOGS=" $(grep -r "console.log(" ./src/) >> $GITHUB_ENV
+      - name: Check for any console.logs
+        run: >
+          if [[ $CONSOLE_LOGS == "" ]];
+          then echo "No console logs, happy days!";
+          else echo "console.log was found in src, please remove them before merging to main" & exit 1;
+          fi
       - name: Install dependencies
         run: npm install
       - name: Run Linting
