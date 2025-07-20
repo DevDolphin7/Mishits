@@ -9,7 +9,7 @@ export default function News({ news }: { news: News }) {
           <p key={index}>{paragraph}</p>
         ))}
       </article>
-      <img src={news.media} alt={news.mediaAltText} />
+      {news.media}
       <h2>{news.footer}</h2>
     </section>
   );
