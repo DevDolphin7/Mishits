@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { getMedias, getCloud } from "./utils/api";
 import { getDevice } from "./utils/utils";
 import Loading from "./utils/Loading";
+import CloudImage from "./utils/CloudImage";
 import Attention from "./Attention";
 import ListenNow from "./ListenNow";
 import News from "./News";
 import newsImage from "../../Plan/Plan v1.png";
 import "../styles/Content.scss";
-import CloudImage from "./utils/CloudImage";
 
 export default function Content() {
   const [cloudContents, setCloudContents] = useState<Sound[]>([]);
@@ -71,7 +71,6 @@ export default function Content() {
       })
       .then((songsWithData) => {
         if (songsWithData) {
-          console.log(songsWithData);
           setCloudContents(songsWithData);
         } else {
           console.error("No songs with data available");
