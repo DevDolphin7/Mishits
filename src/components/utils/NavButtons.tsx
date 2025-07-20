@@ -7,7 +7,7 @@ const navButtons: NavButtons = {
 };
 
 const handleNavClick = (location: string) => {
-  console.log(location);
+  console.warn(`Functionaly to go to ${location} is not implemented yet.`);
 };
 
 export default function NavButtons({ fiend }: { fiend: boolean }) {
