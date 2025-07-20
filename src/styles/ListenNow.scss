@@ -17,6 +17,6 @@
 @media (min-width: sizes.$mobile-max-width) {
     #listen-now {
         display:flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 }
