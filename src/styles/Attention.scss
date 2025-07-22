@@ -1,11 +1,14 @@
+@use "mixins";
 @use "sizes";
 
+#attention {
+    @include mixins.new-section-in-parent;
+    @include mixins.centre-content;
+}
+
 #attention .cloud-photo img {
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    @include mixins.centre-content;
     width: 100%;
+    max-width: 100%;
     max-height: sizes.$section-height-large;
-    overflow: hidden;
-    margin: 0 0 20px 0;
 }

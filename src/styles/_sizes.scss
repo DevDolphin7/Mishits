@@ -1,11 +1,32 @@
+// Screen dimensions
 $mobile-min-width: 280px;
 $mobile-max-width: 450px;
 $tablet-max-width: 1300px;
 
-$title-primary: calc(2rem + 0.5vw);
-$title-secondary: calc(1.5rem + 0.5vw);
-$font-primary: calc(1rem + 0.5vw);
-$font-secondary: calc(1rem + 0.5vw);
+// Components
+$header-height: 100px;
+$header-min-height: 100px;
+$header-max-height: 280px;
 
 $section-height-large: 80vh;
 $section-height-medium: 60vh;
+
+$footer-height: 5vh;
+$footer-min-height: 150px;
+
+// Fonts
+$title-primary: calc(2rem + 0.5vw);
+$title-secondary: calc(1.5rem + 0.5vw);
+
+$font-primary: calc(1rem + 0.5vw);
+$font-secondary: calc(1rem + 0.5vw);
+
+// Spacing
+$height-space: 20px;
+$width-space: 10px;
+
+// Miscellaneous
+$logo-mobile-scale: 1;
+$logo-tablet-scale: 2;
+$logo-monitor-scale: 3;
+

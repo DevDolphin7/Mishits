@@ -1,41 +1,41 @@
+@use "mixins";
 @use "sizes";
 @use "colours";
 
 #news {
+    @include mixins.new-section-in-parent;
     max-width: sizes.$tablet-max-width;
-    min-width: 100px;
-    width: 100%;
-    height: fit-content;
-    background-color: colours.$site-background;
-    margin: 20px 0;
+    background-color: colours.$news-background;
 }
 
 #news h1 {
-    padding: 5px;
+    @include mixins.content-spacer;
+    @include mixins.text-spacer;
     font-size: sizes.$title-primary;
     color: colours.$title-primary;
     background-color: colours.$header-background;
 }
 
 #news p {
-    padding: 10px 5px;
+    @include mixins.text-spacer;
     font-size: sizes.$font-secondary;
     color: colours.$font-secondary;
 }
 
 #news article {
-    padding: 0 5px 5px 5px;
     font-size: sizes.$font-primary;
     color: colours.$font-primary;
 }
 
 #news img {
-    width: calc(100% - 10px);
-    padding: 0 5px;
+    @include mixins.text-spacer;
+    width: calc(100% - sizes.$width-space * 2);
 }
 
 #news h2 {
-    padding: 0 5px 5px 5px;
+    @include mixins.content-spacer;
+    @include mixins.text-spacer;
     font-size: sizes.$title-secondary;
     color: colours.$title-secondary;
+    background-color: colours.$header-background;
 }
