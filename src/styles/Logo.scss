@@ -1,18 +1,19 @@
-@use "colours";
 @use "mixins";
+@use "sizes";
+@use "colours";
 
 div.logo {
     @include mixins.centre-content;
-    align-items: center;
-    margin: 0 10px;
-    width: 140px;
-    height: 80px;
+    width: calc(140px * sizes.$logo-mobile-scale);
+    height: calc(60px * sizes.$logo-mobile-scale);
+    overflow: hidden;
 }
 
 svg#logo {
-    translate: 0 -20px;
     width: 140px;
     height: 100px;
+    translate: 0 calc(-20px * sizes.$logo-mobile-scale);
+    transform: scale(sizes.$logo-mobile-scale);
 }
 
 .logo-letter {
@@ -33,4 +34,28 @@ svg#logo {
 @keyframes stab {
     0%,100% { translate: 120px -40px }
     90% { translate: 170px -50px }
+}
+
+@media (min-width: sizes.$mobile-max-width) {
+    div.logo {
+        width: calc(140px * sizes.$logo-tablet-scale);
+        height: calc(60px * sizes.$logo-tablet-scale);
+    }
+
+    svg#logo {
+        translate: 0 calc(-20px * sizes.$logo-tablet-scale);
+        transform: scale(sizes.$logo-tablet-scale);
+    }
+}
+
+@media (min-width: sizes.$tablet-max-width) {
+    div.logo {
+        width: calc(140px * sizes.$logo-monitor-scale);
+        height: calc(60px * sizes.$logo-monitor-scale);
+    }
+
+    svg#logo {
+        translate: 0 calc(-20px * sizes.$logo-monitor-scale);
+        transform: scale(sizes.$logo-monitor-scale);
+    }
 }
