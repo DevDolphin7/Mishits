@@ -5,7 +5,9 @@
     max-width: sizes.$tablet-max-width;
     min-width: 100px;
     width: 100%;
+    height: fit-content;
     background-color: colours.$site-background;
+    margin: 20px 0;
 }
 
 #news h1 {
