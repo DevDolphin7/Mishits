@@ -13,7 +13,6 @@
 }
 
 .song-card #controls {
-    height: 40px;
     width: 100%;
 }
 
@@ -104,4 +103,28 @@
 #song-card-thin #artwork img {  
    height: 100%;
    max-height: 20vh;
+}
+
+#song-card-wide #controls, #song-card-thin #controls {
+    height: 40px;
+}
+
+// song card basic
+
+#song-card-basic {
+    width: 30%;
+    max-width: 400px;
+    height: fit-content;
+    max-height: 40vw;
+    flex-direction: column;
+}
+
+#song-card-basic #song-info {
+    height: fit-content;
+    padding: 20px;
+}
+
+#song-card-basic #controls .cloudinary-advanced-video {
+    height: 40px;
+    transform: scaleY(1.1);
 }
