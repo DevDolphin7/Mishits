@@ -132,9 +132,25 @@ export function organiseContent(
     if (songList.length === 0 && newsList.length === 0) return output;
 
     if (songList.length !== 0) {
-      const upThreeSongs = songList.splice(0, 3);
+      const sameAlbumSplice = () => {
+        const sameAlbum = songList
+          .sort((a, b) => (a.album < b.album ? -1 : 1))
+          .filter((song) => song.album === songList[0].album)
+          .splice(0, 3);
+
+        sameAlbum.forEach((song) => {
+          const index = songList.indexOf(song);
+          songList.splice(index, index + 1);
+        });
+
+        return sameAlbum;
+      };
+
+      const upToThreeSongs =
+        device === "monitor" ? sameAlbumSplice() : songList.splice(0, 3);
+
       output.push(
-        <ListenNow device={device} songs={upThreeSongs} key={output.length} />
+        <ListenNow device={device} songs={upToThreeSongs} key={output.length} />
       );
     }
 
