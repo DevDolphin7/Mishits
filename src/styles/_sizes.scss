@@ -2,7 +2,10 @@ $mobile-min-width: 280px;
 $mobile-max-width: 450px;
 $tablet-max-width: 1300px;
 
-$title-primary: 2rem;
-$title-secondary: 1.5rem;
-$font-primary: 1rem;
-$font-secondary: 1rem;
+$title-primary: calc(2rem + 0.5vw);
+$title-secondary: calc(1.5rem + 0.5vw);
+$font-primary: calc(1rem + 0.5vw);
+$font-secondary: calc(1rem + 0.5vw);
+
+$section-height-large: 80vh;
+$section-height-medium: 60vh;
