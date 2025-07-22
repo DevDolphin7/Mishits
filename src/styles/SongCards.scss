@@ -1,10 +1,11 @@
+@use "mixins";
 @use "sizes";
 @use "colours";
 
-// All song cards
+// all song cards
 
 .song-card {
-    display: flex;
+    @include mixins.centre-content;
     background-color: colours.$song-card-background;
 }
 
@@ -14,27 +15,27 @@
 
 .song-card #controls {
     width: 100%;
+    height: 40px;
 }
 
 .song-card #artwork {
-    width: 70%;
-    height: 100%;
-    display: flex;
+    @include mixins.centre-content;
     justify-content: center;
+    height: 100%;
 }
 
 .song-card .cloudinary-advanced-video {
-    width: 100%;
-    height: 100%;
+    @include mixins.width-height-match-parent;
 }
 
 .song-card h4, .song-card h5 {
     padding: 5px;
+    text-align: center;
 }
 
 .song-card h4 {
     color: colours.$title-primary;
-    font-size: calc(sizes.$font-primary);
+    font-size: sizes.$font-primary;
 }
 
 .song-card h5 {
@@ -45,17 +46,13 @@
 // song card wide
 
 #song-card-wide {
-    height: 160px;
     width: 100%;
-    max-width: sizes.$mobile-max-width;
 }
 
 #song-card-wide #song-info {
-    height: 120px;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    @include mixins.centre-content-column;
+    width: 100%;
+    min-height: 120px;
 }
 
 #song-card-wide #artwork {
@@ -64,7 +61,8 @@
 }
 
 #song-card-wide #artwork img {
-   height: 160px;
+    @include mixins.centre-content;
+    max-height: 160px;
 }
 
 @media (max-width: sizes.$mobile-min-width) {
@@ -80,51 +78,33 @@
 // song card thin
 
 #song-card-thin {
+    @include mixins.centre-content-column;
     width: 30%;
-    height: fit-content;
-    max-height: 40vw;
-    max-width: sizes.$tablet-max-width;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-#song-card-thin #song-info {
-    height: fit-content;
+    min-height: max(40vw, 350px);
 }
 
 #song-card-thin #artwork {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixins.centre-content;
     width: 100%;
     overflow: hidden;
 }
 
 #song-card-thin #artwork img {  
-   height: 100%;
-   max-height: 20vh;
-}
-
-#song-card-wide #controls, #song-card-thin #controls {
-    height: 40px;
+    width: 100%;
 }
 
 // song card basic
 
 #song-card-basic {
+    @include mixins.centre-content-column;
     width: 30%;
     max-width: 400px;
-    height: fit-content;
-    max-height: 40vw;
-    flex-direction: column;
 }
 
 #song-card-basic #song-info {
-    height: fit-content;
-    padding: 20px;
+    @include mixins.content-spacer;
 }
 
 #song-card-basic #controls .cloudinary-advanced-video {
-    height: 40px;
     transform: scaleY(1.1);
 }
