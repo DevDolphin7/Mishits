@@ -8,7 +8,7 @@ export default function SongCardWide({ song }: { song: Sound }) {
       <div id="hmi">
         <div id="song-info">
           <h4>{song.title}</h4>
-          <h5>{song.artist}</h5>
+          <h5>{song.album}</h5>
         </div>
 
         <div id="controls">
