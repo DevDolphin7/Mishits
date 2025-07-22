@@ -1,59 +1,54 @@
+@use "mixins";
 @use "sizes";
 
 #listen-now {
-    width: 100%;
-    margin: 20px 0;
-}
-
-#listen-now .song-card {
-    margin: 0 0 20px 0;
+    @include mixins.new-section-in-parent;
 }
 
 #album-focus {
+    @include mixins.centre-content-column;
+
     width: 100%;
-    height: sizes.$section-height-large;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: auto;
+    max-height: sizes.$section-height-large;
+
     overflow: hidden;
 }
 
 #album-focus-song-cards {
+    @include mixins.centre-content;
+
     width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    height: 0px;
+
     position: relative;
     top: -50%;
-    z-index: 2;
 }
 
 #album-focus .cloud-photo {
+    @include mixins.width-height-match-parent;
+    @include mixins.centre-content;
     pointer-events: none;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
 #album-focus .cloud-photo img {
-    width: 100%;
     pointer-events: none;
+    width:100%;
 }
 
 @media (max-width: sizes.$mobile-max-width) {
-    #listen-now {
-        min-width: 100px;
+    #listen-now .song-card {
+        margin: 0 0 sizes.$height-space 0;
+    }
+
+    #listen-now .song-card:last-child {
+        margin: 0;
     }
 }
 
 @media (min-width: sizes.$mobile-max-width) {
     #listen-now {
-        display:flex;
+        display: flex;
         justify-content: space-evenly;
     }
 }

@@ -1,17 +1,19 @@
-@use "colours";
+@use "mixins";
 @use "sizes";
+@use "colours";
 
 #navbar {
+    @include mixins.content-spacer;
+    @include mixins.centre-content;
+    
     width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
+
     font-size: sizes.$font-secondary;
     color: colours.$title-secondary;
 }
 
 #navbar h2 {
-    display: flex;
-    
+    display: flex;  
 }
 
 @media (max-width: sizes.$mobile-max-width) {

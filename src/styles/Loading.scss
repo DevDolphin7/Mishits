@@ -1,9 +1,8 @@
+@use "mixins";
 @use "colours";
 
 #loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixins.centre-content;
 }
 
 #loading h1 {
