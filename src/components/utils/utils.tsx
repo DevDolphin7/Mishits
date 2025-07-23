@@ -11,110 +11,110 @@ export function getDevice(): Device {
   return "monitor";
 }
 
+const getAlbums = () => {
+  return getMedias("Album", "image").then((images) => {
+    if ("errorStatus" in images) throw Error("No album artwork found");
+
+    return images.map((image, index) => {
+      const imageComponent = (
+        <CloudImage cloudImageID={image.public_id} key={index} />
+      );
+      return {
+        album: image.context?.custom?.album || "Unknown Album",
+        albumArtwork: imageComponent,
+        albumArtworkAlt: image.context?.custom?.alt || "Album Artwork",
+      };
+    });
+  });
+};
+
+const getNews = () => {
+  return getMedias("News", "image").then((news) => {
+    if ("errorStatus" in news) throw Error("No news items found");
+
+    return news.map((newsItem, index) => {
+      const imageComponent = (
+        <CloudImage cloudImageID={newsItem.public_id} key={index} />
+      );
+
+      return {
+        title: newsItem.context?.custom?.caption || "Untitled News",
+        body: newsItem.context?.custom?.body
+          ? newsItem.context?.custom?.body.split("  ")
+          : [],
+        footer: newsItem.context?.custom?.footer || "",
+        media: imageComponent,
+        mediaAltText: newsItem.context?.custom?.alt || "News Image",
+      };
+    });
+  });
+};
+
+const formatSongs = (songs: CloudResponse[], albums: Album[]) => {
+  const cloud = getCloud();
+
+  return songs.map((song) => {
+    const album =
+      albums.filter(
+        (album) => album.album === song.context?.custom?.album
+      )[0] || null;
+
+    return {
+      title: song.context?.custom?.caption || "Untitled",
+      artist: "Mishits",
+      album: song.context?.custom?.album || "Unknown Album",
+      albumArtwork: album.albumArtwork || null,
+      albumArtworkAlt: album.albumArtworkAlt || "Album Artwork",
+      data: cloud.video(song.public_id).format("auto"),
+    };
+  });
+};
+
 export function getContent(
   setCloudSongs: React.Dispatch<React.SetStateAction<Sound[]>>,
   setCloudNews: React.Dispatch<React.SetStateAction<News[]>>
 ) {
-  const albumsPromise = getMedias("Album", "image")
-    .then((images) => {
-      return images.map((image, index) => {
-        const imageComponent = (
-          <CloudImage cloudImageID={image.public_id} key={index} />
-        );
-        return {
-          album: image.context?.custom?.album || "Unknown Album",
-          albumArtwork: imageComponent,
-          albumArtworkAlt: image.context?.custom?.alt || "Album Artwork",
-        };
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching album images: ", error);
-    });
+  const albumsPromise = getAlbums();
 
-  const songsPromise = getMedias("Listen", "video").catch((error) => {
-    console.error("Error fetching songs: ", error);
+  const songsPromise = getMedias("Listen", "video").then((songs) => {
+    if ("errorStatus" in songs) throw Error("No songs found");
+
+    return songs;
   });
 
-  const newsPromise = getMedias("News", "image")
-    .then((images) => {
-      return images.map((image, index) => {
-        const imageComponent = (
-          <CloudImage cloudImageID={image.public_id} key={index} />
-        );
-
-        return {
-          title: image.context?.custom?.caption || "Untitled News",
-          body: image.context?.custom?.body
-            ? image.context?.custom?.body.split("  ")
-            : [],
-          footer: image.context?.custom?.footer || "",
-          media: imageComponent,
-          mediaAltText: image.context?.custom?.alt || "News Image",
-        };
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching news images: ", error);
-    });
+  const newsPromise = getNews();
 
   Promise.all([albumsPromise, songsPromise, newsPromise])
-    .then(
-      ([albums, songs, news]: [
-        Album[] | void,
-        CloudResponse[] | void,
-        News[] | void
-      ]) => {
-        if (!songs) {
-          console.error("No songs data available");
-          return;
-        }
-        if (!albums) {
-          console.error("No albums data available");
-          return;
-        }
-        if (!news) {
-          console.error("No news data available");
-          return;
-        }
+    .then(([albums, songs, news]: [Album[], CloudResponse[], News[]]) => {
+      setCloudNews(news);
 
-        const cloud = getCloud();
-
-        const formattedSongs = songs.map((song) => {
-          const album =
-            albums.filter(
-              (art) => art.album === song.context?.custom?.album
-            )[0] || null;
-
-          return {
-            title: song.context?.custom?.caption || "Untitled",
-            artist: "Mishits",
-            album: song.context?.custom?.album || "Unknown Album",
-            albumArtwork: album.albumArtwork || null,
-            albumArtworkAlt: album.albumArtworkAlt || "Album Artwork",
-            data: cloud.video(song.public_id).format("auto"),
-          };
-        });
-
-        setCloudNews(news);
-
-        return formattedSongs;
-      }
-    )
-    .catch((error) => {
-      console.error("Error fetching content: ", error);
+      return formatSongs(songs, albums);
     })
     .then((songsWithData) => {
-      if (songsWithData) {
-        setCloudSongs(songsWithData);
-      } else {
-        console.error("No songs with data available");
-      }
+      setCloudSongs(songsWithData);
     })
     .catch((error) => {
-      console.error("Error fetching song data: ", error);
+      console.warn(`Error fetching content: ${error}`);
     });
 }
+
+const spliceSameAlbumOnly = (songList: Sound[]) => {
+  const songListCopy = [...songList];
+
+  const sameAlbum = songListCopy
+    .sort((a, b) => (a.album < b.album ? -1 : 1))
+    .filter((song) => song.album === songList[0].album)
+    .splice(0, 3);
+
+  sameAlbum.forEach((song) => {
+    const index = songList.indexOf(song);
+    // songList intentionally mutated as recursive step
+    // (songList is already a copy of the input - songs)
+    songList.splice(index, index + 1);
+  });
+
+  return sameAlbum;
+};
 
 export function organiseContent(
   songs: Sound[],
@@ -132,22 +132,10 @@ export function organiseContent(
     if (songList.length === 0 && newsList.length === 0) return output;
 
     if (songList.length !== 0) {
-      const sameAlbumSplice = () => {
-        const sameAlbum = songList
-          .sort((a, b) => (a.album < b.album ? -1 : 1))
-          .filter((song) => song.album === songList[0].album)
-          .splice(0, 3);
-
-        sameAlbum.forEach((song) => {
-          const index = songList.indexOf(song);
-          songList.splice(index, index + 1);
-        });
-
-        return sameAlbum;
-      };
-
       const upToThreeSongs =
-        device === "monitor" ? sameAlbumSplice() : songList.splice(0, 3);
+        device === "monitor"
+          ? spliceSameAlbumOnly(songList)
+          : songList.splice(0, 3);
 
       output.push(
         <ListenNow device={device} songs={upToThreeSongs} key={output.length} />
