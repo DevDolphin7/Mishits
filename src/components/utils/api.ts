@@ -12,21 +12,25 @@ export function getCloud(): Cloudinary {
 export function getMedias(
   tag: string,
   media: string
-): Promise<CloudResponse[]> {
+): Promise<CloudResponse[] | ErrorResponse> {
   return fetch(
     `https://res.cloudinary.com/dmspa7m1k/${media}/list/${tag.toLowerCase()}.json`
   )
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        return {
+          errorStatus: response.status,
+          url: response.url,
+        };
       }
       return response.json();
     })
-    .catch((error) => {
-      console.error("Failed to fetch image list: ", error);
-      return [];
-    })
-    .then(({ resources }: { resources: CloudResponse[] }) => {
-      return resources;
-    });
+    .then(
+      (formattedResponse: ErrorResponse | { resources: CloudResponse[] }) => {
+        if ("errorStatus" in formattedResponse) {
+          return formattedResponse;
+        }
+        return formattedResponse.resources;
+      }
+    );
 }
