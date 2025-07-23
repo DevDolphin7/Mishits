@@ -55,6 +55,11 @@ interface CloudResponse {
   [key: string]: string | Array | object | undefined;
 }
 
+interface ErrorResponse {
+  errorStatus: number;
+  url: string;
+}
+
 interface CloudContent {
   ListenNow: Sound[];
 }

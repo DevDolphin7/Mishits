@@ -6,9 +6,14 @@
     @include mixins.centre-content;
 }
 
+#attention .cloudinary-advanced-video {
+    max-width: 100%;
+    max-height: sizes.$section-height-large;
+}
+
 #attention .cloud-photo img {
     @include mixins.centre-content;
-    width: 100%;
+    height: 100%;
     max-width: 100%;
     max-height: sizes.$section-height-large;
 }
