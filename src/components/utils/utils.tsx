@@ -1,4 +1,4 @@
-import { getMedias, getCloud } from "./api";
+import { getMedias } from "./api";
 import CloudImage from "./CloudImage";
 import ListenNow from "../ListenNow";
 import News from "../News";
@@ -51,8 +51,6 @@ const getNews = () => {
 };
 
 const formatSongs = (songs: CloudResponse[], albums: Album[]) => {
-  const cloud = getCloud();
-
   return songs.map((song) => {
     const album =
       albums.filter(
@@ -65,7 +63,7 @@ const formatSongs = (songs: CloudResponse[], albums: Album[]) => {
       album: song.context?.custom?.album || "Unknown Album",
       albumArtwork: album.albumArtwork || null,
       albumArtworkAlt: album.albumArtworkAlt || "Album Artwork",
-      data: cloud.video(song.public_id).format("auto"),
+      audioID: song.public_id,
     };
   });
 };
@@ -88,10 +86,7 @@ export function getContent(
     .then(([albums, songs, news]: [Album[], CloudResponse[], News[]]) => {
       setCloudNews(news);
 
-      return formatSongs(songs, albums);
-    })
-    .then((songsWithData) => {
-      setCloudSongs(songsWithData);
+      setCloudSongs(formatSongs(songs, albums));
     })
     .catch((error) => {
       console.warn(`Error fetching content: ${error}`);
