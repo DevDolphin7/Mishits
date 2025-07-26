@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { AdvancedVideo } from "@cloudinary/react";
-import { getCloud, getMedias } from "./utils/api";
+import { getMedias } from "./utils/api";
 import CloudImage from "./utils/CloudImage";
+import CloudVideo from "./utils/CloudVideo";
 import "../styles/Attention.scss";
 import Loading from "./utils/Loading";
 
@@ -55,24 +55,8 @@ export default function Attention() {
         <Loading />
       ) : (
         cloudMedias.map((media: CloudResponse, index: number) => {
-          if (["webm", "mp4", "ogv"].includes(media.format)) {
-            const cloud = getCloud();
-            const video = cloud
-              .video(media.public_id)
-              .format("auto")
-              .quality("auto");
-
-            return (
-              <AdvancedVideo
-                cldVid={video}
-                key={index}
-                className="cloudinary-advanced-video"
-                muted
-                autoPlay
-                loop
-              />
-            );
-          }
+          if (["webm", "mp4", "ogv"].includes(media.format))
+            return <CloudVideo cloudVideoID={media.public_id} key={index} />;
           return <CloudImage cloudImageID={media.public_id} key={index} />;
         })
       )}
