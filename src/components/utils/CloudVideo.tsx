@@ -9,6 +9,7 @@ export default function CloudVideo({ cloudVideoID }: { cloudVideoID: string }) {
 
   useEffect(() => {
     const cloud = getCloud();
+
     setVideo(cloud.video(cloudVideoID).format("auto").quality("auto"));
   }, [cloudVideoID]);
 
