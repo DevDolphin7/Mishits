@@ -14,9 +14,10 @@
 }
 
 .song-card #controls {
-    display: flex;
     width: 100%;
     height: 40px;
+    z-index: 1;
+    background-color: colours.$song-card-background;
 }
 
 .song-card #artwork {
