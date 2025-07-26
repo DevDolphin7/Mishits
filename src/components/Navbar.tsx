@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { getDevice } from "./utils/utils";
 import NavButtons from "./utils/NavButtons";
 import sizes from "./utils/sizes";
 import "../styles/Navbar.scss";
 
 export default function Navbar() {
-  const [fiend, setFiend] = useState(false);
+  const [fiend, setFiend] = useState(getDevice() === "monitor");
 
   useEffect(() => {
     const handleResize = () => {
