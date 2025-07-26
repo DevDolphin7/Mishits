@@ -1,30 +1,19 @@
-import { AdvancedVideo } from "@cloudinary/react";
-import Loading from "./utils/Loading";
+import CloudAudio from "./utils/CloudAudio";
 import "../styles/SongCards.scss";
 
 export default function SongCardWide({ song }: { song: Sound }) {
   return (
-    <section id="song-card-wide" className="song-card">
-      <div id="hmi">
-        <div id="song-info">
+    <section className="song-card song-card-wide">
+      <div className="hmi">
+        <div className="song-info">
           <h4>{song.title}</h4>
           <h5>{song.album}</h5>
         </div>
 
-        <div id="controls">
-          {song.data ? (
-            <AdvancedVideo
-              cldVid={song.data}
-              controls
-              className="cloudinary-advanced-video"
-            />
-          ) : (
-            <Loading />
-          )}
-        </div>
+        <CloudAudio cloudAudioID={song.audioID} />
       </div>
 
-      <div id="artwork">{song.albumArtwork}</div>
+      <div className="artwork">{song.albumArtwork}</div>
     </section>
   );
 }
