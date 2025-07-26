@@ -1,7 +1,7 @@
 {
   "name": "mishits",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.4",
   "homepage": "https://DevDolphin7.github.io/Mishits/",
   "type": "module",
   "scripts": {
