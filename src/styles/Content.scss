@@ -1,8 +1,15 @@
 @use "mixins";
+@use "sizes";
 @use "colours";
 
-#content {
-    @include mixins.width-height-match-parent;
+main {
     @include mixins.centre-content-column;
+
+    width: 100vw;
+    height: fit-content;
+    min-height: calc(100vh - sizes.$header-max-height - sizes.$footer-height);
+    
+    margin: 0 5%;
+
     background-color: colours.$main-background;
 }

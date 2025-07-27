@@ -2,13 +2,17 @@
 @use "sizes";
 @use "colours";
 
-#footer {
-    @include mixins.width-height-match-parent;
+footer {
     @include mixins.centre-content-column;
+
+    width: 100vw;
+    height: sizes.$footer-height;
+    min-height: sizes.$footer-min-height;
+
     background-color: colours.$footer-background;
 }
 
-#footer h2 {
+footer h2 {
     @include mixins.text-spacer;
     text-align: center;
     color: colours.$title-secondary;

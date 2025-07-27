@@ -5,10 +5,10 @@ import "../styles/Header.scss";
 
 export default function Header() {
   return (
-    <div id="header">
+    <header>
       <Logo />
       <Navbar />
       <Menu />
-    </div>
+    </header>
   );
 }

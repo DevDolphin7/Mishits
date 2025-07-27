@@ -2,14 +2,29 @@
 @use "sizes";
 @use "colours";
 
-#header {
-    @include mixins.width-height-match-parent;
+header {
     @include mixins.centre-content-column;
+
+    width: 100vw;
+    height: calc(sizes.$header-height + 5px * sizes.$logo-mobile-scale);
+
     background-color: colours.$header-background;
 }
 
 @media (max-width: sizes.$mobile-max-width) {
-    #header {
+    header {
         flex-direction: row;
+    }
+}
+
+@media (min-width: sizes.$mobile-max-width) {
+    header {
+        height: calc(sizes.$header-height + 60px * sizes.$logo-tablet-scale)
+    }
+}
+
+@media (min-width: sizes.$tablet-max-width) {
+    header {
+        height: calc(sizes.$header-height + 60px * sizes.$logo-monitor-scale)
     }
 }

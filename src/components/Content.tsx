@@ -23,13 +23,13 @@ export default function Content() {
   }, [device]);
 
   return (
-    <div id="content">
+    <main>
       {device !== "mobile" ? <Attention /> : null}
       {cloudSongs.length === 0 ? (
         <Loading />
       ) : (
         organiseContent(cloudSongs, cloudNews, device)
       )}
-    </div>
+    </main>
   );
 }
