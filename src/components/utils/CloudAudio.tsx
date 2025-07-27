@@ -15,15 +15,7 @@ export default function CloudVideo({ cloudAudioID }: { cloudAudioID: string }) {
 
   return (
     <div className="controls">
-      {audio ? (
-        <AdvancedVideo
-          cldVid={audio}
-          className="cloudinary-advanced-video"
-          controls
-        />
-      ) : (
-        <Loading />
-      )}
+      {audio ? <AdvancedVideo cldVid={audio} controls /> : <Loading />}
     </div>
   );
 }

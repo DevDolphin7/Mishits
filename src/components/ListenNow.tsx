@@ -11,7 +11,7 @@ export default function ListenNow({
   songs: Sound[];
 }) {
   return (
-    <section id="listen-now">
+    <section className="listen-now">
       {songs.map((song, index) => {
         if (device === "mobile")
           return <SongCardWide song={song} key={index} />;
@@ -21,9 +21,9 @@ export default function ListenNow({
         return null;
       })}
       {device === "monitor" ? (
-        <section id="album-focus">
+        <section className="album-focus">
           {songs[0].albumArtwork}
-          <div id="album-focus-song-cards">
+          <div className="album-focus-song-cards">
             {songs.map((song, index) => (
               <SongCardBasic song={song} key={index} />
             ))}

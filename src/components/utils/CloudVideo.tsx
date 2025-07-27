@@ -16,13 +16,7 @@ export default function CloudVideo({ cloudVideoID }: { cloudVideoID: string }) {
   return (
     <div className="cloud-video">
       {video ? (
-        <AdvancedVideo
-          cldVid={video}
-          className="cloudinary-advanced-video"
-          muted
-          autoPlay
-          loop
-        />
+        <AdvancedVideo cldVid={video} muted autoPlay loop />
       ) : (
         <Loading />
       )}

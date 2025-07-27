@@ -9,7 +9,7 @@ div.logo {
     overflow: hidden;
 }
 
-svg#logo {
+.svg-logo {
     width: 140px;
     height: 100px;
     translate: 0 calc(-20px * sizes.$logo-mobile-scale);
@@ -42,7 +42,7 @@ svg#logo {
         height: calc(60px * sizes.$logo-tablet-scale);
     }
 
-    svg#logo {
+    .svg-logo {
         translate: 0 calc(-20px * sizes.$logo-tablet-scale);
         transform: scale(sizes.$logo-tablet-scale);
     }
@@ -54,7 +54,7 @@ svg#logo {
         height: calc(60px * sizes.$logo-monitor-scale);
     }
 
-    svg#logo {
+    .svg-logo {
         translate: 0 calc(-20px * sizes.$logo-monitor-scale);
         transform: scale(sizes.$logo-monitor-scale);
     }
