@@ -132,9 +132,7 @@ export function organiseContent(
           ? spliceSameAlbumOnly(songList)
           : songList.splice(0, 3);
 
-      output.push(
-        <ListenNow device={device} songs={upToThreeSongs} key={output.length} />
-      );
+      output.push(<ListenNow songs={upToThreeSongs} key={output.length} />);
     }
 
     if (newsList.length !== 0) {
