@@ -19,6 +19,9 @@ export default function Menu() {
   }, [menuRenderCount]);
 
   const handleMenuClick = () => {
+    if (!menuOpen) window.scrollTo(0, 0);
+    document.documentElement.style.overflow = menuOpen ? "visible" : "hidden";
+
     setMenuRenderCount(menuRenderCount + 1);
   };
 

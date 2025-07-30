@@ -2,7 +2,7 @@ import "../styles/News.scss";
 
 export default function News({ news }: { news: News }) {
   return (
-    <section id="news">
+    <section className="news">
       <h1>{news.title}</h1>
       <article>
         {news.body.map((paragraph, index) => (

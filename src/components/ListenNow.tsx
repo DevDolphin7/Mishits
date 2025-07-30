@@ -1,17 +1,15 @@
+import { useContext } from "react";
+import { DeviceContext } from "../contexts/Device.tsx";
 import SongCardWide from "./SongCardWide.tsx";
 import SongCardThin from "./SongCardThin.tsx";
 import SongCardBasic from "./SongCardBasic.tsx";
 import "../styles/ListenNow.scss";
 
-export default function ListenNow({
-  device,
-  songs,
-}: {
-  device: Device;
-  songs: Sound[];
-}) {
+export default function ListenNow({ songs }: { songs: Sound[] }) {
+  const device = useContext(DeviceContext);
+
   return (
-    <section id="listen-now">
+    <section className="listen-now">
       {songs.map((song, index) => {
         if (device === "mobile")
           return <SongCardWide song={song} key={index} />;
@@ -21,9 +19,9 @@ export default function ListenNow({
         return null;
       })}
       {device === "monitor" ? (
-        <section id="album-focus">
+        <section className="album-focus">
           {songs[0].albumArtwork}
-          <div id="album-focus-song-cards">
+          <div className="album-focus-song-cards">
             {songs.map((song, index) => (
               <SongCardBasic song={song} key={index} />
             ))}

@@ -1,13 +1,14 @@
 {
   "name": "mishits",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.4",
   "homepage": "https://DevDolphin7.github.io/Mishits/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "console-logs": "echo 'CONSOLE_LOGS=' $(grep -r 'console.log(' ./src/)",
     "preview": "vite preview",
     "pre-deploy" : "npm run build",
     "deploy" : "gh-pages -d dist"

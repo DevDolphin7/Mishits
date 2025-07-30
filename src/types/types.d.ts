@@ -18,7 +18,7 @@ interface Attention extends Media {
 interface Sound extends Album {
   title: string;
   artist: string;
-  data: CloudinaryVideo;
+  audioID: string;
 }
 
 interface News extends Media {

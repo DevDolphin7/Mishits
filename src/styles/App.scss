@@ -2,7 +2,7 @@
 @use "sizes";
 @use "colours";
 
-div#site {
+#root {
     @include mixins.centre-content;
     flex-wrap: wrap;
 
@@ -11,35 +11,4 @@ div#site {
     min-height: 100vh;
 
     background-color: colours.$site-background;
-}
-
-header {
-    width: 100vw;
-    height: calc(sizes.$header-height + 5px * sizes.$logo-mobile-scale);
-}
-
-main {
-    width: 100vw;
-    height: fit-content;
-    min-height: calc(100vh - sizes.$header-max-height - sizes.$footer-height);
-    
-    margin: 0 5%;
-}
-
-footer {
-    width: 100vw;
-    height: sizes.$footer-height;
-    min-height: sizes.$footer-min-height;
-}
-
-@media (min-width: sizes.$mobile-max-width) {
-    header {
-        height: calc(sizes.$header-height + 60px * sizes.$logo-tablet-scale)
-    }
-}
-
-@media (min-width: sizes.$tablet-max-width) {
-    header {
-        height: calc(sizes.$header-height + 60px * sizes.$logo-monitor-scale)
-    }
 }

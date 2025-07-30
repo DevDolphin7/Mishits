@@ -13,18 +13,22 @@
     width: 75%;
 }
 
-.song-card #controls {
+.song-card .controls {
     width: 100%;
     height: 40px;
 }
 
-.song-card #artwork {
+.song-card audio {
+    background-color: colours.$song-card-background;
+}
+
+.song-card .artwork {
     @include mixins.centre-content;
     justify-content: center;
     height: 100%;
 }
 
-.song-card .cloudinary-advanced-video {
+.song-card video {
     @include mixins.width-height-match-parent;
 }
 
@@ -45,28 +49,28 @@
 
 // song card wide
 
-#song-card-wide {
+.song-card-wide {
     width: 100%;
 }
 
-#song-card-wide #song-info {
+.song-card-wide .song-info {
     @include mixins.centre-content-column;
     width: 100%;
     min-height: 120px;
 }
 
-#song-card-wide #artwork {
+.song-card-wide .artwork {
     width: 160px;
     overflow: hidden;
 }
 
-#song-card-wide #artwork img {
+.song-card-wide .artwork img {
     @include mixins.centre-content;
     max-height: 160px;
 }
 
 @media (max-width: sizes.$mobile-min-width) {
-    #song-card-wide #artwork {    
+    .song-card-wide .artwork {    
         display: none;
     }
 
@@ -77,34 +81,34 @@
 
 // song card thin
 
-#song-card-thin {
+.song-card-thin {
     @include mixins.centre-content-column;
     width: 30%;
     min-height: max(40vw, 350px);
 }
 
-#song-card-thin #artwork {
+.song-card-thin .artwork {
     @include mixins.centre-content;
     width: 100%;
     overflow: hidden;
 }
 
-#song-card-thin #artwork img {  
+.song-card-thin .artwork img {  
     width: 100%;
 }
 
 // song card basic
 
-#song-card-basic {
+.song-card-basic {
     @include mixins.centre-content-column;
     width: 30%;
     max-width: 400px;
 }
 
-#song-card-basic #song-info {
+.song-card-basic .song-info {
     @include mixins.content-spacer;
 }
 
-#song-card-basic #controls .cloudinary-advanced-video {
+.song-card-basic .controls video {
     transform: scaleY(1.1);
 }

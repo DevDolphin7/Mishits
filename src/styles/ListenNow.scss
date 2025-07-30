@@ -1,11 +1,11 @@
 @use "mixins";
 @use "sizes";
 
-#listen-now {
+.listen-now {
     @include mixins.new-section-in-parent;
 }
 
-#album-focus {
+.album-focus {
     @include mixins.centre-content-column;
 
     width: 100%;
@@ -15,7 +15,7 @@
     overflow: hidden;
 }
 
-#album-focus-song-cards {
+.album-focus-song-cards {
     @include mixins.centre-content;
 
     width: 100%;
@@ -25,29 +25,29 @@
     top: -50%;
 }
 
-#album-focus .cloud-photo {
+.album-focus .cloud-photo {
     @include mixins.width-height-match-parent;
     @include mixins.centre-content;
     pointer-events: none;
 }
 
-#album-focus .cloud-photo img {
+.album-focus .cloud-photo img {
     pointer-events: none;
     width:100%;
 }
 
 @media (max-width: sizes.$mobile-max-width) {
-    #listen-now .song-card {
+    .listen-now .song-card {
         margin: 0 0 sizes.$height-space 0;
     }
 
-    #listen-now .song-card:last-child {
+    .listen-now .song-card:last-child {
         margin: 0;
     }
 }
 
 @media (min-width: sizes.$mobile-max-width) {
-    #listen-now {
+    .listen-now {
         display: flex;
         justify-content: space-evenly;
     }

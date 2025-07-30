@@ -1,10 +1,11 @@
 @use "mixins";
 @use "colours";
 
-#loading {
+.loading {
     @include mixins.centre-content;
+    justify-content: center;
 }
 
-#loading h1 {
+.loading h1 {
     color: colours.$title-primary;
 }

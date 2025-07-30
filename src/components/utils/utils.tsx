@@ -1,4 +1,4 @@
-import { getMedias, getCloud } from "./api";
+import { getMedias } from "./api";
 import CloudImage from "./CloudImage";
 import ListenNow from "../ListenNow";
 import News from "../News";
@@ -51,8 +51,6 @@ const getNews = () => {
 };
 
 const formatSongs = (songs: CloudResponse[], albums: Album[]) => {
-  const cloud = getCloud();
-
   return songs.map((song) => {
     const album =
       albums.filter(
@@ -65,7 +63,7 @@ const formatSongs = (songs: CloudResponse[], albums: Album[]) => {
       album: song.context?.custom?.album || "Unknown Album",
       albumArtwork: album.albumArtwork || null,
       albumArtworkAlt: album.albumArtworkAlt || "Album Artwork",
-      data: cloud.video(song.public_id).format("auto"),
+      audioID: song.public_id,
     };
   });
 };
@@ -88,29 +86,25 @@ export function getContent(
     .then(([albums, songs, news]: [Album[], CloudResponse[], News[]]) => {
       setCloudNews(news);
 
-      return formatSongs(songs, albums);
-    })
-    .then((songsWithData) => {
-      setCloudSongs(songsWithData);
+      setCloudSongs(formatSongs(songs, albums));
     })
     .catch((error) => {
       console.warn(`Error fetching content: ${error}`);
     });
 }
 
-const spliceSameAlbumOnly = (songList: Sound[]) => {
-  const songListCopy = [...songList];
+const spliceSameAlbumOnly = (songsCopy: Sound[]) => {
+  const songListCopy = [...songsCopy];
 
   const sameAlbum = songListCopy
     .sort((a, b) => (a.album < b.album ? -1 : 1))
-    .filter((song) => song.album === songList[0].album)
+    .filter((song) => song.album === songsCopy[0].album)
     .splice(0, 3);
 
   sameAlbum.forEach((song) => {
-    const index = songList.indexOf(song);
-    // songList intentionally mutated as recursive step
-    // (songList is already a copy of the input - songs)
-    songList.splice(index, index + 1);
+    const index = songsCopy.indexOf(song);
+    // songsCopy intentionally mutated as recursive step - it is already a copy of the React State variable.
+    songsCopy.splice(index, index + 1);
   });
 
   return sameAlbum;
@@ -137,9 +131,7 @@ export function organiseContent(
           ? spliceSameAlbumOnly(songList)
           : songList.splice(0, 3);
 
-      output.push(
-        <ListenNow device={device} songs={upToThreeSongs} key={output.length} />
-      );
+      output.push(<ListenNow songs={upToThreeSongs} key={output.length} />);
     }
 
     if (newsList.length !== 0) {
