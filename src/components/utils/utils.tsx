@@ -93,19 +93,18 @@ export function getContent(
     });
 }
 
-const spliceSameAlbumOnly = (songList: Sound[]) => {
-  const songListCopy = [...songList];
+const spliceSameAlbumOnly = (songsCopy: Sound[]) => {
+  const songListCopy = [...songsCopy];
 
   const sameAlbum = songListCopy
     .sort((a, b) => (a.album < b.album ? -1 : 1))
-    .filter((song) => song.album === songList[0].album)
+    .filter((song) => song.album === songsCopy[0].album)
     .splice(0, 3);
 
   sameAlbum.forEach((song) => {
-    const index = songList.indexOf(song);
-    // songList intentionally mutated as recursive step
-    // (songList is already a copy of the input - songs)
-    songList.splice(index, index + 1);
+    const index = songsCopy.indexOf(song);
+    // songsCopy intentionally mutated as recursive step - it is already a copy of the React State variable.
+    songsCopy.splice(index, index + 1);
   });
 
   return sameAlbum;
