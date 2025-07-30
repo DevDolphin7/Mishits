@@ -12,7 +12,7 @@ footer {
     background-color: colours.$footer-background;
 }
 
-footer h2 {
+footer p {
     @include mixins.text-spacer;
     text-align: center;
     color: colours.$title-secondary;
