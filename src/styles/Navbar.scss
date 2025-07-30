@@ -12,8 +12,9 @@
     color: colours.$title-secondary;
 }
 
-#navbar h2 {
+#navbar h1 {
     display: flex;  
+    font-size: sizes.$title-secondary;
 }
 
 @media (max-width: sizes.$mobile-max-width) {
