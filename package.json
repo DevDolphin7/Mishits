@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "console-logs": "echo 'CONSOLE_LOGS=' $(grep -r 'console.log(' ./src/)",
     "preview": "vite preview",
     "pre-deploy" : "npm run build",
     "deploy" : "gh-pages -d dist"
