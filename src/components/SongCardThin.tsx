@@ -5,8 +5,8 @@ export default function SongCardWide({ song }: { song: Sound }) {
   return (
     <section className="song-card song-card-thin">
       <div className="song-info">
-        <h4>{song.title}</h4>
-        <h5>{song.album}</h5>
+        <h1>{song.title}</h1>
+        <h2>{song.album}</h2>
       </div>
 
       <div className="artwork">{song.albumArtwork}</div>

@@ -6,8 +6,8 @@ export default function SongCardWide({ song }: { song: Sound }) {
     <section className="song-card song-card-wide">
       <div className="hmi">
         <div className="song-info">
-          <h4>{song.title}</h4>
-          <h5>{song.album}</h5>
+          <h1>{song.title}</h1>
+          <h2>{song.album}</h2>
         </div>
 
         <CloudAudio cloudAudioID={song.audioID} />

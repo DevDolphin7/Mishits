@@ -32,17 +32,17 @@
     @include mixins.width-height-match-parent;
 }
 
-.song-card h4, .song-card h5 {
+.song-card h1, .song-card h2 {
     padding: 5px;
     text-align: center;
 }
 
-.song-card h4 {
+.song-card h1 {
     color: colours.$title-primary;
     font-size: sizes.$font-primary;
 }
 
-.song-card h5 {
+.song-card h2 {
     color: colours.$title-secondary;
     font-size: sizes.$font-secondary;
 }
